@@ -1,0 +1,28 @@
+E:\Study\Core\StockMarketApp\Core\Core\bin\Debug\net8.0\Core.deps.json
+E:\Study\Core\StockMarketApp\Core\Core\bin\Debug\net8.0\Core.runtimeconfig.json
+E:\Study\Core\StockMarketApp\Core\Core\bin\Debug\net8.0\Core.dll
+E:\Study\Core\StockMarketApp\Core\Core\bin\Debug\net8.0\Core.pdb
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.csproj.AssemblyReference.cache
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.AssemblyInfoInputs.cache
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.AssemblyInfo.cs
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.csproj.CoreCompileInputs.cache
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.dll
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\refint\Core.dll
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.pdb
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\Core.genruntimeconfig.cache
+E:\Study\Core\StockMarketApp\Core\Core\obj\Debug\net8.0\ref\Core.dll
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\bin\Debug\net8.0\Core.deps.json
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\bin\Debug\net8.0\Core.runtimeconfig.json
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\bin\Debug\net8.0\Core.dll
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\bin\Debug\net8.0\Core.pdb
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.csproj.AssemblyReference.cache
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.AssemblyInfoInputs.cache
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.AssemblyInfo.cs
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.csproj.CoreCompileInputs.cache
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.dll
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\refint\Core.dll
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.pdb
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\Core.genruntimeconfig.cache
+E:\Study\GitHub Repos\Stock-App-Backend\Core\Core\obj\Debug\net8.0\ref\Core.dll
