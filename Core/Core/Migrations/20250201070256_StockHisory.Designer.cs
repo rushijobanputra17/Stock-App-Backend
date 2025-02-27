@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250126061213_SeedRoles")]
-    partial class SeedRoles
+    [Migration("20250201070256_StockHisory")]
+    partial class StockHisory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,14 @@ namespace Core.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -66,6 +74,10 @@ namespace Core.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -105,8 +117,9 @@ namespace Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -118,8 +131,9 @@ namespace Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UpdatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -143,8 +157,9 @@ namespace Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -152,8 +167,9 @@ namespace Core.Migrations
                     b.Property<int>("IndustryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UpdatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -161,6 +177,45 @@ namespace Core.Migrations
                     b.HasKey("CompanyId");
 
                     b.ToTable("Companys");
+                });
+
+            modelBuilder.Entity("Core.Models.Portfolio", b =>
+                {
+                    b.Property<int>("PortfolioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PortfolioId"));
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("PurchasedPrice")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PortfolioId");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("StockId");
+
+                    b.ToTable("UserPortfolio");
                 });
 
             modelBuilder.Entity("Core.Models.Stock", b =>
@@ -174,8 +229,9 @@ namespace Core.Migrations
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -204,8 +260,9 @@ namespace Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UpdatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -213,6 +270,28 @@ namespace Core.Migrations
                     b.HasKey("StockId");
 
                     b.ToTable("Stocks");
+                });
+
+            modelBuilder.Entity("Core.Models.StockHistory", b =>
+                {
+                    b.Property<int>("StockHistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StockHistoryId"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StockId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("StockPrice")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.HasKey("StockHistoryId");
+
+                    b.ToTable("StockHistory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -244,19 +323,19 @@ namespace Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dfc123df-e4f9-400c-8fbf-266302a2083b",
+                            Id = "9fbbb07a-6778-47e4-9b3c-b2f0416930a7",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "30e42902-74c1-4bf9-aa19-f5d10170b331",
+                            Id = "914ba1ff-b89b-49cb-a578-4e859a5b9a14",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         },
                         new
                         {
-                            Id = "85139aaf-e89d-4b61-83dc-8db8a00ddf05",
+                            Id = "bf7ed8e0-e0d3-4d47-b292-ab25e0ba95bc",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -377,6 +456,19 @@ namespace Core.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Core.Models.Portfolio", b =>
+                {
+                    b.HasOne("Core.Models.AppUser", null)
+                        .WithMany("Portfolios")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Core.Models.Stock", null)
+                        .WithMany("Portfolios")
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -428,9 +520,16 @@ namespace Core.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Core.Models.AppUser", b =>
+                {
+                    b.Navigation("Portfolios");
+                });
+
             modelBuilder.Entity("Core.Models.Stock", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Portfolios");
                 });
 #pragma warning restore 612, 618
         }

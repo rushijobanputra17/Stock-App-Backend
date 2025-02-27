@@ -59,12 +59,19 @@ namespace Core.Services
             return null;
         }
 
-        public string CreateToken(AppUser appUser)
+        public async Task<String> CreateToken(AppUser appUser)
         {
+
+            var userRoles = await _userManager.GetRolesAsync(appUser);
+
+
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Email,appUser.Email),
-                new Claim(JwtRegisteredClaimNames.GivenName,appUser.UserName)
+                new Claim(JwtRegisteredClaimNames.GivenName,appUser.UserName),
+                 new Claim("UserId", appUser.Id.ToString()),
+               new Claim("Role", string.Join(",", userRoles))
+
 
             };
 
@@ -96,7 +103,7 @@ namespace Core.Services
         new Claim(JwtRegisteredClaimNames.Sub, appUser.Id.ToString()),
          new Claim(JwtRegisteredClaimNames.Name, appUser.UserName),
          new Claim(JwtRegisteredClaimNames.Email, appUser.Email),
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) 
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
     };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

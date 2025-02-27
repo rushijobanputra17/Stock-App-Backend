@@ -46,6 +46,18 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // Allow Angular app
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -64,6 +76,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 
 
 }).AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -104,8 +117,11 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IComapnyRepository, CompanyRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 
 var app = builder.Build();
+
+app.UseCors("AllowAngular");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

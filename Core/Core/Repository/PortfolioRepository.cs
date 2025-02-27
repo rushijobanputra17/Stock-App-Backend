@@ -1,4 +1,5 @@
 ﻿using Core.Data;
+using Core.Interfaces;
 using Core.Migrations;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ using static Core.Enums.Enums;
 
 namespace Core.Repository
 {
-    public class PortfolioRepository
+    public class PortfolioRepository : IPortfolioRepository
     {
         private readonly ApplicationDbContext context;
         public PortfolioRepository(ApplicationDbContext dbContext)
@@ -144,6 +145,17 @@ namespace Core.Repository
                 var stockExist = await context.UserPortfolio.FirstOrDefaultAsync(x => x.UserId == userId && x.StockId == model.StockId);
                 if (stockExist != null)
                 {
+
+                    var stockObj = await context.Stocks.FindAsync(model.StockId);
+                    stockExist.UpdatedDate = DateTime.Now;
+                    stockExist.PurchasedPrice = model.PurchasedPrice;
+                    stockExist.Quantity = model.Quantity;
+
+
+                    context.UserPortfolio.Update(stockExist);
+                    await context.SaveChangesAsync();
+                    res.Status = (int)APISTATUS.OK;
+
                     res.Status = (int)APISTATUS.OK;
                     res.StatusMessage = "Stock aleady added in portfolio";
                 }
@@ -153,7 +165,8 @@ namespace Core.Repository
                     model.UserId = userId;
                     model.CreatedDate = DateTime.Now;
                     model.UpdatedDate = DateTime.Now;
-                    model.PurchasedPrice = stockObj != null ? stockObj.StockPrice : 0;
+                    model.PurchasedPrice = model.PurchasedPrice;
+                    model.Quantity = model.Quantity;
 
                     context.UserPortfolio.Add(model);
                     await context.SaveChangesAsync();

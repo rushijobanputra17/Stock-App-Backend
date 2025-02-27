@@ -47,8 +47,9 @@ namespace StockMarketApp.Controllers
             try
             {
                
-                _tokenService.GetLoginUserInformation(User);
-                res = await _stockRepo.GetAllStocks(query);
+                //_tokenService.GetLoginUserInformation(User);
+                var user = GetLongUserInfo();
+                res = await _stockRepo.GetAllStocks(query, user);
                
             }
             catch (Exception ex)

@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "WPDqk9unWNctYizIt/2J7ZkL7HO9TEOBZI5mCgsY4EA=",
+  "Hash": "bMKsLnHh6QSnQMkF+Wa207bvF+nl0zWayPogqBfTO/U=",
   "Source": "StockMarketApp",
   "BasePath": "_content/StockMarketApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

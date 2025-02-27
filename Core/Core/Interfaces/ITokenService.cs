@@ -10,7 +10,7 @@ namespace Core.Interfaces
 {
     public  interface ITokenService
     {
-        public string CreateToken(AppUser appUser);
+        public Task<string> CreateToken(AppUser appUser);
 
         public UserInformation GetLoginUserInformation(ClaimsPrincipal User);
 

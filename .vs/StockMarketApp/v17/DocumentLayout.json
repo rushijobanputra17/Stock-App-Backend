@@ -1,12 +1,253 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Study\\GitHub Repos\\Stock-App-Backend\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A6B7576-EEBE-4F8D-8D10-488CABBCFA32}|StockMarketApp\\StockMarketApp.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\stockmarketapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A6B7576-EEBE-4F8D-8D10-488CABBCFA32}|StockMarketApp\\StockMarketApp.csproj|solutionrelative:stockmarketapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\repository\\stockrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\repository\\stockrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\interfaces\\istockrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\interfaces\\istockrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\models\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\models\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A6B7576-EEBE-4F8D-8D10-488CABBCFA32}|StockMarketApp\\StockMarketApp.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\stockmarketapp\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A6B7576-EEBE-4F8D-8D10-488CABBCFA32}|StockMarketApp\\StockMarketApp.csproj|solutionrelative:stockmarketapp\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\repository\\portfoliorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\repository\\portfoliorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A6B7576-EEBE-4F8D-8D10-488CABBCFA32}|StockMarketApp\\StockMarketApp.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\stockmarketapp\\controllers\\portfoliocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A6B7576-EEBE-4F8D-8D10-488CABBCFA32}|StockMarketApp\\StockMarketApp.csproj|solutionrelative:stockmarketapp\\controllers\\portfoliocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|d:\\learning\\stock-app-backend\\stock-app-backend\\core\\core\\interfaces\\iportfoliorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C121DF1E-3FDB-414D-88B9-5DE92A47A3C7}|Core\\Core\\Core.csproj|solutionrelative:core\\core\\interfaces\\iportfoliorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 83,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IPortfolioRepository.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Interfaces\\IPortfolioRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Core\\Interfaces\\IPortfolioRepository.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Interfaces\\IPortfolioRepository.cs",
+              "RelativeToolTip": "Core\\Core\\Interfaces\\IPortfolioRepository.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAASwA8AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:25:29.469Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PortfolioRepository.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Repository\\PortfolioRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Core\\Repository\\PortfolioRepository.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Repository\\PortfolioRepository.cs",
+              "RelativeToolTip": "Core\\Core\\Repository\\PortfolioRepository.cs",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAuwIkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:25:38.046Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PortfolioController.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\StockMarketApp\\Controllers\\PortfolioController.cs",
+              "RelativeDocumentMoniker": "StockMarketApp\\Controllers\\PortfolioController.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\StockMarketApp\\Controllers\\PortfolioController.cs",
+              "RelativeToolTip": "StockMarketApp\\Controllers\\PortfolioController.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAlwFgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:25:54.977Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Core\\Core\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Core\\Core\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABUAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T13:13:58.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Stock.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Models\\Stock.cs",
+              "RelativeDocumentMoniker": "Core\\Core\\Models\\Stock.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Models\\Stock.cs",
+              "RelativeToolTip": "Core\\Core\\Models\\Stock.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T12:53:24.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Core",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Core.csproj",
+              "RelativeDocumentMoniker": "Core\\Core\\Core.csproj",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Core.csproj",
+              "RelativeToolTip": "Core\\Core\\Core.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-05T12:53:17.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:142:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:144:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:145:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:147:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:148:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:146:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\StockMarketApp\\Program.cs",
+              "RelativeDocumentMoniker": "StockMarketApp\\Program.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\StockMarketApp\\Program.cs",
+              "RelativeToolTip": "StockMarketApp\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHQAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:27:08.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IStockRepository.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Interfaces\\IStockRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Core\\Interfaces\\IStockRepository.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Interfaces\\IStockRepository.cs",
+              "RelativeToolTip": "Core\\Core\\Interfaces\\IStockRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:26:19.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StockRepository.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Repository\\StockRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Core\\Repository\\StockRepository.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\Core\\Core\\Repository\\StockRepository.cs",
+              "RelativeToolTip": "Core\\Core\\Repository\\StockRepository.cs",
+              "ViewState": "AQIAAJoBAAAAAAAAAAAowK0BAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:26:16.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StockController.cs",
+              "DocumentMoniker": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\StockMarketApp\\Controllers\\StockController.cs",
+              "RelativeDocumentMoniker": "StockMarketApp\\Controllers\\StockController.cs",
+              "ToolTip": "D:\\Learning\\Stock-App-Backend\\Stock-App-Backend\\StockMarketApp\\Controllers\\StockController.cs",
+              "RelativeToolTip": "StockMarketApp\\Controllers\\StockController.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwDQAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T13:26:14.887Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

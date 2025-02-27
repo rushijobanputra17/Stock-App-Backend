@@ -16,7 +16,7 @@ namespace Core.Data
         {
 
         }
-
+        public DbSet<StockHistory> StockHistory { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Comments> StockComments { get; set; }
         public DbSet<Company> Companys { get; set; }

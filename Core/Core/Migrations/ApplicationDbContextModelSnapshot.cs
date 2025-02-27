@@ -269,6 +269,28 @@ namespace Core.Migrations
                     b.ToTable("Stocks");
                 });
 
+            modelBuilder.Entity("Core.Models.StockHistory", b =>
+                {
+                    b.Property<int>("StockHistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StockHistoryId"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StockId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("StockPrice")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.HasKey("StockHistoryId");
+
+                    b.ToTable("StockHistory");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -298,19 +320,19 @@ namespace Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "580cae08-120d-44a7-b86d-adeda18f8dde",
+                            Id = "9fbbb07a-6778-47e4-9b3c-b2f0416930a7",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "f9f8bd4e-0249-4e2a-b516-9ed5a36c1ede",
+                            Id = "914ba1ff-b89b-49cb-a578-4e859a5b9a14",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         },
                         new
                         {
-                            Id = "dcefdacf-fd3d-4618-a712-9b05709df642",
+                            Id = "bf7ed8e0-e0d3-4d47-b292-ab25e0ba95bc",
                             Name = "user",
                             NormalizedName = "USER"
                         });

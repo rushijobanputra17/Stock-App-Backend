@@ -3,6 +3,8 @@ using Core.Helpers;
 using Core.Interfaces;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections;
@@ -14,14 +16,16 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 using static Core.Enums.Enums;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Core.Repository
 {
-   
+
     public class StockRepository : IStockRepository
     {
         private readonly ApplicationDbContext context;
-        public StockRepository(ApplicationDbContext dbContext) {
+        public StockRepository(ApplicationDbContext dbContext)
+        {
             context = dbContext;
         }
 
@@ -106,38 +110,153 @@ namespace Core.Repository
 
         public async Task<Stock> GetStockModel(int id)
         {
-            return  await context.Stocks.FirstOrDefaultAsync(s => s.StockId == id);
+            return await context.Stocks.FirstOrDefaultAsync(s => s.StockId == id);
         }
 
-        public  async Task<JsonResponse> GetAllStocks(QueryParameters QueryParameters)
+        public async Task<JsonResponse> GetAllStocks(QueryParameters QueryParameters, UserInformation user)
         {
-
+            var userId = user != null ? user.UserId : "";
             JsonResponse res = new JsonResponse();
             try
             {
                 res.Status = (int)APISTATUS.OK;
+                //            var queryData = context.Stocks
+                //.Join(context.Companys.AsNoTracking(),
+                //    stock => stock.CompanyId,
+                //    company => company.CompanyId,
+                //    (stock, company) => new
+                //    {
+                //        stock.StockId,
+                //        stock.StockName,
+                //        stock.MarketCap,
+                //        stock.StockPrice,
+                //        stock.LastDevidend,
+                //        stock.StockType,
+                //        stock.Symbol,
+                //        stock.LastUpdatedTime,
+                //        stock.CreatedBy,
+                //        stock.UpdatedBy,
+                //        stock.CreatedDate,
+                //        stock.UpdatedDate,
+                //        stock.CompanyId,
+                //        CompanyName = company.CompanyName
+                //    }).GroupJoin(context.StockHistory,
+                //    StockWithCom => StockWithCom.StockId,
+                //    history => history.StockId,
+                //    (StockWithCom, history) => new
+                //    {
+                //        StockWithCom.StockId,
+                //        StockWithCom.StockName,
+                //        StockWithCom.MarketCap,
+                //        StockWithCom.StockPrice,
+                //        StockWithCom.LastDevidend,
+                //        StockWithCom.StockType,
+                //        StockWithCom.Symbol,
+                //        StockWithCom.LastUpdatedTime,
+                //        StockWithCom.CreatedBy,
+                //        StockWithCom.UpdatedBy,
+                //        StockWithCom.CreatedDate,
+                //        StockWithCom.UpdatedDate,
+                //        StockWithCom.CompanyId,
+                //        StockWithCom.CompanyName,
+                //        StockHistoryData = history.ToList().OrderBy(x=>x.CreatedDate).ToList()
+                //    }
+                //    )
+                //    .LeftJoin(context.UserPortfolio.Where(x=>x.UserId == userId)
+                //    ,stockData=>stockData.StockId,
+                //    port=>port.StockId,
+                //     (stockData,port) => new
+                //     {
+                //         stockData.StockId,
+                //         stockData.StockName,
+                //         stockData.MarketCap,
+                //         stockData.StockPrice,
+                //         stockData.LastDevidend,
+                //         stockData.StockType,
+                //         stockData.Symbol,
+                //         stockData.LastUpdatedTime,
+                //         stockData.CreatedBy,
+                //         stockData.UpdatedBy,
+                //         stockData.CreatedDate,
+                //         stockData.UpdatedDate,
+                //         stockData.CompanyId,
+                //         stockData.CompanyName,
+                //         stockData.StockHistoryData,
+                //         UserPortfolioQty = port.Quantity,
+                //         UserPortfolioPrice = port.PurchasedPrice
+                //     }
+                //    )
+                //.AsQueryable();
+
+
                 var queryData = context.Stocks
-    .Join(context.Companys.AsNoTracking(),
-        stock => stock.CompanyId,
-        company => company.CompanyId,
-        (stock, company) => new
-        {
-            stock.StockId,
-            stock.StockName,
-            stock.MarketCap,
-            stock.StockPrice,
-            stock.LastDevidend,
-            stock.StockType,
-            stock.Symbol,
-            stock.LastUpdatedTime,
-            stock.CreatedBy,
-            stock.UpdatedBy,
-            stock.CreatedDate,
-            stock.UpdatedDate,
-            stock.CompanyId,
-            CompanyName = company.CompanyName
-        })
-    .AsQueryable();
+.Join(context.Companys.AsNoTracking(),
+    stock => stock.CompanyId,
+    company => company.CompanyId,
+    (stock, company) => new
+    {
+        stock.StockId,
+        stock.StockName,
+        stock.MarketCap,
+        stock.StockPrice,
+        stock.LastDevidend,
+        stock.StockType,
+        stock.Symbol,
+        stock.LastUpdatedTime,
+        stock.CreatedBy,
+        stock.UpdatedBy,
+        stock.CreatedDate,
+        stock.UpdatedDate,
+        stock.CompanyId,
+        CompanyName = company.CompanyName
+    })
+.GroupJoin(context.StockHistory,
+    stockWithCompany => stockWithCompany.StockId,
+    history => history.StockId,
+    (stockWithCompany, history) => new
+    {
+        stockWithCompany.StockId,
+        stockWithCompany.StockName,
+        stockWithCompany.MarketCap,
+        stockWithCompany.StockPrice,
+        stockWithCompany.LastDevidend,
+        stockWithCompany.StockType,
+        stockWithCompany.Symbol,
+        stockWithCompany.LastUpdatedTime,
+        stockWithCompany.CreatedBy,
+        stockWithCompany.UpdatedBy,
+        stockWithCompany.CreatedDate,
+        stockWithCompany.UpdatedDate,
+        stockWithCompany.CompanyId,
+        stockWithCompany.CompanyName,
+        StockHistoryData = history.OrderBy(x => x.CreatedDate).ToList()
+    })
+.SelectMany(stockData => context.UserPortfolio
+    .Where(port => port.UserId == userId && port.StockId == stockData.StockId)
+    .DefaultIfEmpty(), // This ensures the left join behavior
+    (stockData, port) => new
+    {
+        stockData.StockId,
+        stockData.StockName,
+        stockData.MarketCap,
+        stockData.StockPrice,
+        stockData.LastDevidend,
+        stockData.StockType,
+        stockData.Symbol,
+        stockData.LastUpdatedTime,
+        stockData.CreatedBy,
+        stockData.UpdatedBy,
+        stockData.CreatedDate,
+        stockData.UpdatedDate,
+        stockData.CompanyId,
+        stockData.CompanyName,
+        stockData.StockHistoryData,
+        UserPortfolioQty = port != null ? port.Quantity : 0, // Handle null case
+        UserPortfolioPrice = port != null ? port.PurchasedPrice : 0 // Handle null case
+       ,UserPortfolio = port
+    })
+.AsQueryable();
+
 
                 if (QueryParameters != null)
                 {
@@ -161,7 +280,7 @@ namespace Core.Repository
                     if (!string.IsNullOrEmpty(QueryParameters.SortBy))
                     {
                         string sort = QueryParameters.SortBy.ToLower();
-                        if (sort=="stockname")
+                        if (sort == "stockname")
                         {
                             queryData = QueryParameters.IsDecending ? queryData.OrderByDescending(x => x.StockName) : queryData.OrderBy(x => x.StockName);
                         }
@@ -185,7 +304,7 @@ namespace Core.Repository
                 var skipNumber = (QueryParameters.PageNumber - 1) * QueryParameters.Pagesize;
 
                 var records = await queryData.Skip(skipNumber).Take(QueryParameters.Pagesize).ToListAsync();
-                if (records!=null && records.Any())
+                if (records != null && records.Any())
                 {
                     res.TotalRecords = records.Count;
                     res.Data = records;
@@ -261,12 +380,12 @@ namespace Core.Repository
             catch (Exception ex)
             {
                 res.Status = (int)APISTATUS.InternalServerError;
-                res.StatusMessage = CommonMethods.CommonMethods.GetException(ex);  
+                res.StatusMessage = CommonMethods.CommonMethods.GetException(ex);
             }
 
             return res;
 
-           
+
         }
 
         public async Task<JsonResponse> GetStocksById(int id)
@@ -276,7 +395,7 @@ namespace Core.Repository
             try
             {
                 res.Status = (int)APISTATUS.OK;
-                var stock  = await context.Stocks.Join(context.Companys, stock => stock.CompanyId,
+                var stock = await context.Stocks.Join(context.Companys, stock => stock.CompanyId,
                     company => company.CompanyId,
                      (stock, company) => new
                      {
@@ -335,13 +454,13 @@ namespace Core.Repository
                 res.StatusMessage = CommonMethods.CommonMethods.GetException(ex);
             }
 
-            return res; 
+            return res;
         }
 
         public async Task<JsonResponse> DeleteById(int id)
         {
             JsonResponse res = new JsonResponse();
-          
+
             try
             {
                 var stock = await GetStockModel(id);
@@ -363,7 +482,7 @@ namespace Core.Repository
                 res.Status = (int)APISTATUS.InternalServerError;
                 res.StatusMessage = CommonMethods.CommonMethods.GetException(ex);
             }
-           
+
 
             return res;
         }
@@ -378,13 +497,13 @@ namespace Core.Repository
             {
                 return null;
             }
-           
+
         }
 
 
         public async Task<List<Comments>> GetCommentsByStockId(int stockId)
         {
-            
+
 
             try
             {
@@ -396,9 +515,9 @@ namespace Core.Repository
             }
         }
 
-        public  async Task<Comments> GetCommentModelById(int commentId)
+        public async Task<Comments> GetCommentModelById(int commentId)
         {
-          
+
             try
             {
                 return await context.StockComments.FindAsync(commentId);
@@ -466,12 +585,12 @@ namespace Core.Repository
                 res.Status = (int)APISTATUS.InternalServerError;
                 res.StatusMessage = CommonMethods.CommonMethods.GetException(ex);
             }
-          
+
 
             return res;
         }
 
-        public async Task<JsonResponse > DeleteStockComment(int stockId,int commentId)
+        public async Task<JsonResponse> DeleteStockComment(int stockId, int commentId)
         {
             JsonResponse res = new JsonResponse();
             try
@@ -497,11 +616,11 @@ namespace Core.Repository
                 res.Status = (int)APISTATUS.InternalServerError;
                 res.StatusMessage = CommonMethods.CommonMethods.GetException(ex);
             }
-        
+
             return res;
         }
 
-       
+
 
     }
 }

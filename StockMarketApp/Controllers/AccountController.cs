@@ -32,7 +32,8 @@ namespace StockMarketApp.Controllers
         private readonly SignInManager<AppUser> signInManager;
 
 
-        public AccountController(ApplicationDbContext dbContext,UserManager<AppUser> userManager, ITokenService tokenService,SignInManager<AppUser> signIn) {
+        public AccountController(ApplicationDbContext dbContext, UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signIn)
+        {
             _UserManager = userManager;
             _tokenService = tokenService;
             signInManager = signIn;
@@ -80,13 +81,14 @@ namespace StockMarketApp.Controllers
             return Ok(response);
         }
 
-        private UserInformation GetUserTokenInfo(AppUser appUser,bool isCreateRefreshToken=true)
+        private async Task<UserInformation> GetUserTokenInfo(AppUser appUser, bool isCreateRefreshToken = true)
         {
-           var  userObj = new UserInformation();    
+            var userObj = new UserInformation();
             try
             {
-                 userObj = new UserInformation()
+                userObj = new UserInformation()
                 {
+                    UserId = appUser.Id,
                     Email = appUser.Email,
                     UserName = appUser.UserName,
                     FirstName = appUser.FirstName,
@@ -94,7 +96,7 @@ namespace StockMarketApp.Controllers
 
                 };
 
-                var token = _tokenService.CreateToken(appUser);
+                var token = await _tokenService.CreateToken(appUser);
                 userObj.Token = token;
                 if (isCreateRefreshToken)
                 {
@@ -113,7 +115,7 @@ namespace StockMarketApp.Controllers
                     };
                     Response.Cookies.Append("UserRefreshToken", refreshToken, cookieOptions);
                 }
-                
+
 
 
 
@@ -136,20 +138,20 @@ namespace StockMarketApp.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var user = await _UserManager.Users.FirstOrDefaultAsync(x=> x.UserName.ToLower()==model.UserName.ToLower() || x.Email.ToLower()==model.UserName.ToLower());
-                if (user==null)
+                var user = await _UserManager.Users.FirstOrDefaultAsync(x => x.UserName.ToLower() == model.UserName.ToLower() || x.Email.ToLower() == model.UserName.ToLower());
+                if (user == null)
                 {
                     response.Status = (int)APISTATUS.Unauthorized;
-                    response.StatusMessage ="No User found.";
+                    response.StatusMessage = "No User found.";
                 }
                 else
                 {
-                    var result = await signInManager.CheckPasswordSignInAsync(user,model.Password,false);
-                    if (result!=null && result.Succeeded)
+                    var result = await signInManager.CheckPasswordSignInAsync(user, model.Password, false);
+                    if (result != null && result.Succeeded)
                     {
                         response.Status = (int)APISTATUS.OK;
-                     
-                        response.Data = GetUserTokenInfo(user);
+
+                        response.Data = await GetUserTokenInfo(user);
 
                     }
                     else
@@ -172,7 +174,7 @@ namespace StockMarketApp.Controllers
             JsonResponse response = new JsonResponse();
             try
             {
-               
+
                 var appUser = new AppUser
                 {
 
@@ -180,6 +182,8 @@ namespace StockMarketApp.Controllers
                     Email = userObj.Email,
                     FirstName = userObj.FirstName,
                     LastName = userObj.LastName
+                    ,
+                    RefreshToken = ""
                 };
 
                 var createUser = await _UserManager.CreateAsync(appUser, userObj.Password);
@@ -190,8 +194,8 @@ namespace StockMarketApp.Controllers
                     if (roleResult.Succeeded)
                     {
                         response.Status = (int)APISTATUS.OK;
-                      
-                        response.Data = GetUserTokenInfo(appUser);
+
+                        response.Data = await GetUserTokenInfo(appUser);
 
                     }
                     else
@@ -215,7 +219,7 @@ namespace StockMarketApp.Controllers
         }
 
         [HttpPost("RefreshToken")]
-        public  async Task<IActionResult> RefreshToken()
+        public async Task<IActionResult> RefreshToken()
         {
             JsonResponse response = new JsonResponse();
             try
@@ -227,7 +231,7 @@ namespace StockMarketApp.Controllers
                     if (principal != null)
                     {
                         var usernameClaim = principal.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Name);
-                       
+
                         var userName = usernameClaim?.Value;
 
                         var appUser = context.Users.Where(x => x.UserName == userName).FirstOrDefault();
@@ -237,17 +241,17 @@ namespace StockMarketApp.Controllers
                             var exp = principal.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Exp)?.Value;
                             if (exp != null && long.TryParse(exp, out var expSeconds))
                             {
-                            
+
                                 if (DateTimeOffset.FromUnixTimeSeconds(expSeconds).UtcDateTime > DateTime.Now)
                                 {
                                     response.Status = (int)APISTATUS.OK;
-                                    response.Data = GetUserTokenInfo(appUser, false);
+                                    response.Data = await GetUserTokenInfo(appUser, false);
                                     return Ok(response);
                                 }
-                              
+
                             }
 
-                           
+
                         }
 
 
@@ -305,7 +309,7 @@ namespace StockMarketApp.Controllers
                 response.Status = (int)APISTATUS.InternalServerError;
                 response.StatusMessage = CommonMethods.GetException(ex);
             }
-            
+
 
 
             return Ok(response);

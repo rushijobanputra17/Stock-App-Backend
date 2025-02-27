@@ -10,7 +10,7 @@ namespace Core.Interfaces
 {
     public interface IStockRepository
     {
-         Task<JsonResponse> GetAllStocks(QueryParameters QueryParameters);
+         Task<JsonResponse> GetAllStocks(QueryParameters QueryParameters, UserInformation user);
 
         Task<JsonResponse> GetStocksById(int id);
 
