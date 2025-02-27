@@ -40,6 +40,7 @@ namespace StockMarketApp.Controllers
             context = dbContext;
 
         }
+        
 
         [HttpPost("RegisterUser")]
         public async Task<IActionResult> Register([FromBody] AddUserAccount userObj)
